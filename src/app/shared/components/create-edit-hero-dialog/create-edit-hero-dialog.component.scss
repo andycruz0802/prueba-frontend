@@ -1,0 +1,15 @@
+:host {
+  .title {
+    color: rgb(82, 250, 118);
+    font-size: 20px;
+    font-weight: bold;
+    padding: 16px 0;
+  }
+  .form {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    height: 90%;
+    justify-content: center;
+  }
+}

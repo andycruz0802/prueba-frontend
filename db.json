@@ -1,0 +1,34 @@
+{
+  "heroes": [
+    {
+      "id": 1,
+      "name": "Spider Cerdo",
+      "age": 20,
+      "strong_point": "magic"
+    },
+    {
+      "name": "spiderman",
+      "age": 32,
+      "strong_point": "fire",
+      "id": 2
+    },
+    {
+      "name": "Goku",
+      "age": 2,
+      "strong_point": "magic",
+      "id": 6
+    },
+    {
+      "name": "Gran heroe",
+      "age": 3,
+      "strong_point": "fire",
+      "id": 9
+    },
+    {
+      "name": "dsadasd",
+      "age": 3,
+      "strong_point": "water",
+      "id": 10
+    }
+  ]
+}

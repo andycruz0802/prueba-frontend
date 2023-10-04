@@ -1,0 +1,48 @@
+<form class="form" [formGroup]="form">
+  <div class="title">
+    {{ data.action === actionEnum.edit ? "EDIT MODE" : "CREATION MODE" }}
+  </div>
+  <mat-form-field
+    [matTooltip]="
+      nameControl.value.length > 40
+        ? 'Maximum length 40 but got ' + nameControl.value.length
+        : ''
+    "
+    [matTooltipPosition]="'above'"
+  >
+    <mat-label>Name</mat-label>
+    <input matInput formControlName="name" />
+  </mat-form-field>
+
+  <mat-form-field
+    [matTooltip]="
+      ageControl.value > 999 || ageControl.value < 0
+        ? 'Age must be between 0 - 999'
+        : ''
+    "
+    [matTooltipPosition]="'above'"
+  >
+    <mat-label>Age</mat-label>
+    <input min="0" max="999" type="number" matInput formControlName="age" />
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Strong point</mat-label>
+    <input matInput formControlName="strong_point" [matAutocomplete]="auto" />
+    <mat-autocomplete #auto="matAutocomplete">
+      <mat-option *ngFor="let option of options" [value]="option">
+        {{ option }}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+  <div>
+    <button
+      [disabled]="!form.valid"
+      mat-raised-button
+      color="accent"
+      (click)="onSubmit()"
+    >
+      Confirm
+    </button>
+  </div>
+</form>

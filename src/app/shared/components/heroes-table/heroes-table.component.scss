@@ -1,0 +1,27 @@
+:host {
+  display: block;
+  width: 80%;
+  margin: 0 auto;
+  padding: 20px 0;
+  .title {
+    width: 100%;
+    display: block;
+    font-size: 30px;
+    padding: 12px 0;
+    text-align: center;
+  }
+
+  .filter {
+    width: 100%;
+  }
+
+  .paginator {
+    margin-bottom: 12px;
+  }
+
+  .father-button {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+  }
+}

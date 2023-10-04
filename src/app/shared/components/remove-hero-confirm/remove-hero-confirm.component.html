@@ -1,0 +1,14 @@
+<p class="title">Are you sure you want to delete {{ data.name }}?</p>
+<div class="buttons">
+  <div>
+    <button mat-raised-button color="accent" (click)="onSubmit(false)">
+      Cancel
+    </button>
+  </div>
+
+  <div>
+    <button mat-raised-button color="warn" (click)="onSubmit(true)">
+      Sure, delete
+    </button>
+  </div>
+</div>
