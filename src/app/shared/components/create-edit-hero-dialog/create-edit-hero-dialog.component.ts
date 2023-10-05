@@ -1,4 +1,4 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import {
   AbstractControl,
   FormBuilder,
@@ -17,30 +17,21 @@ import { StrongPoint } from '../../services/heroes/heroes.service';
   templateUrl: './create-edit-hero-dialog.component.html',
   styleUrls: ['./create-edit-hero-dialog.component.scss'],
 })
-export class CreateEditHeroDialogComponent {
+export class CreateEditHeroDialogComponent implements OnInit {
   public actionEnum = ActionEnum;
 
   public options: StrongPoint[] = ['water', 'wind', 'fire', 'magic'];
-  public form: FormGroup = this.fb.group({
-    name: [
-      this.data?.hero?.name || '',
-      [Validators.required, Validators.minLength(0), Validators.maxLength(40)],
-    ],
-    age: [
-      this.data?.hero?.age || null,
-      [Validators.required, Validators.min(0), Validators.max(999)],
-    ],
-    strong_point: [
-      this.data?.hero?.strong_point || '',
-      [Validators.required, this.strongPointValidator.bind(this)],
-    ],
-  });
+  public form!: FormGroup;
 
   constructor(
     private dialogRef: MatDialogRef<CreateEditHeroDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: { hero?: Hero; action: string },
     private fb: FormBuilder
   ) {}
+
+  ngOnInit(): void {
+    this.initForm();
+  }
 
   onSubmit() {
     if (this.form.valid) {
@@ -54,5 +45,26 @@ export class CreateEditHeroDialogComponent {
       return { invalidStrongPoint: true };
     }
     return null;
+  }
+
+  initForm() {
+    this.form = this.fb.group({
+      name: [
+        this.data?.hero?.name || '',
+        [
+          Validators.required,
+          Validators.minLength(0),
+          Validators.maxLength(40),
+        ],
+      ],
+      age: [
+        this.data?.hero?.age || null,
+        [Validators.required, Validators.min(0), Validators.max(999)],
+      ],
+      strong_point: [
+        this.data?.hero?.strong_point || '',
+        [Validators.required, this.strongPointValidator.bind(this)],
+      ],
+    });
   }
 }
