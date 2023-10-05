@@ -1,8 +1,7 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import {
   AbstractControl,
   FormBuilder,
-  FormControl,
   FormGroup,
   ValidationErrors,
   Validators,
@@ -17,21 +16,17 @@ import { StrongPoint } from '../../services/heroes/heroes.service';
   templateUrl: './create-edit-hero-dialog.component.html',
   styleUrls: ['./create-edit-hero-dialog.component.scss'],
 })
-export class CreateEditHeroDialogComponent implements OnInit {
+export class CreateEditHeroDialogComponent {
   public actionEnum = ActionEnum;
 
   public options: StrongPoint[] = ['water', 'wind', 'fire', 'magic'];
-  public form!: FormGroup;
+  public form: FormGroup = this.getForm();
 
   constructor(
     private dialogRef: MatDialogRef<CreateEditHeroDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: { hero?: Hero; action: string },
     private fb: FormBuilder
   ) {}
-
-  ngOnInit(): void {
-    this.initForm();
-  }
 
   onSubmit() {
     if (this.form.valid) {
@@ -47,8 +42,8 @@ export class CreateEditHeroDialogComponent implements OnInit {
     return null;
   }
 
-  initForm() {
-    this.form = this.fb.group({
+  getForm(): FormGroup {
+    return this.fb.group({
       name: [
         this.data?.hero?.name || '',
         [
