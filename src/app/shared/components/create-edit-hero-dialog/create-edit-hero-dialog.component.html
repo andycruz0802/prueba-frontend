@@ -4,8 +4,8 @@
   </div>
   <mat-form-field
     [matTooltip]="
-      nameControl.value.length > 40
-        ? 'Maximum length 40 but got ' + nameControl.value.length
+      this.form.get('name')?.value.length > 40
+        ? 'Maximum length 40 but got ' + this.form.get('name')?.value.length
         : ''
     "
     [matTooltipPosition]="'above'"
@@ -16,7 +16,7 @@
 
   <mat-form-field
     [matTooltip]="
-      ageControl.value > 999 || ageControl.value < 0
+      this.form.get('age')?.value > 999 || this.form.get('age')?.value < 0
         ? 'Age must be between 0 - 999'
         : ''
     "

@@ -18,17 +18,7 @@ import { StrongPoint } from '../../services/heroes/heroes.service';
   styleUrls: ['./create-edit-hero-dialog.component.scss'],
 })
 export class CreateEditHeroDialogComponent {
-  public get nameControl() {
-    return this.form.get('name') as FormControl;
-  }
-
-  public get ageControl() {
-    return this.form.get('age') as FormControl;
-  }
-
-  public get actionEnum() {
-    return ActionEnum;
-  }
+  public actionEnum = ActionEnum;
 
   public options: StrongPoint[] = ['water', 'wind', 'fire', 'magic'];
   public form: FormGroup = this.fb.group({
